@@ -1,0 +1,41 @@
+class Student:
+    def __init__(self, name, class_, roll_number, year_of_admission, father_name, mother_name, phone_number):
+        self.name = name
+        self.class_ = class_
+        self.roll_number = roll_number
+        self.year_of_admission = year_of_admission
+        self.father_name = father_name
+        self.mother_name = mother_name
+        self.phone_number = phone_number
+
+students = []
+
+def add_student(name, class_, roll_number, year_of_admission, father_name, mother_name, phone_number):
+    student = Student(name, class_, roll_number, year_of_admission, father_name, mother_name, phone_number)
+    students.append(student)
+
+def find_student(roll_number):
+    for student in students:
+        if student.roll_number == roll_number:
+            return student
+    return None
+
+# example usage
+add_student("John Doe", "10th", 101, 2020, "Mike Doe", "Jane Doe", "1234567890")
+add_student("Jane Doe", "9th", 201, 2021, "Mike Doe", "Jane Doe", "9876543210")
+
+while True:
+    user_input = input("Enter your roll number to get your details (or 'quit' to exit): ")
+    if user_input == "quit":
+        break
+    student = find_student(int(user_input))
+    if student:
+        print(f"Name: {student.name}")
+        print(f"Class: {student.class_}")
+        print(f"Roll Number: {student.roll_number}")
+        print(f"Year of Admission: {student.year_of_admission}")
+        print(f"Father's Name: {student.father_name}")
+        print(f"Mother's Name: {student.mother_name}")
+        print(f"Phone Number: {student.phone_number}")
+    else:
+        print("Sorry, we couldn't find a student with that roll number.")
